@@ -1,0 +1,82 @@
+.report-hero {
+  text-align: center;
+}
+
+.report-score {
+  margin: 12rpx 0;
+  font-size: 96rpx;
+  line-height: 1;
+  font-weight: 900;
+  color: #fff;
+}
+
+.report-content {
+  margin-top: -28rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.score-row {
+  display: grid;
+  grid-template-columns: 142rpx 1fr 64rpx;
+  gap: 14rpx;
+  align-items: center;
+  margin-top: 24rpx;
+}
+
+.score-label {
+  color: var(--text-secondary);
+  font-size: 25rpx;
+}
+
+.score-number {
+  text-align: right;
+  font-size: 27rpx;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.feedback-card {
+  margin-top: 24rpx;
+}
+
+.feedback-text {
+  margin-top: 16rpx;
+  color: var(--text-secondary);
+  font-size: 26rpx;
+  line-height: 1.8;
+}
+
+.state-panel {
+  min-height: 100vh;
+  padding: 160rpx 44rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.state-icon {
+  width: 128rpx;
+  height: 128rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 36rpx;
+  color: #2764e8;
+  background: #edf4ff;
+  font-size: 38rpx;
+  font-weight: 900;
+}
+
+.state-title {
+  margin-top: 30rpx;
+  font-size: 38rpx;
+  font-weight: 900;
+}
+
+.state-desc {
+  margin-top: 12rpx;
+  color: var(--text-secondary);
+  font-size: 26rpx;
+}

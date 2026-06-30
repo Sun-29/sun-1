@@ -1,0 +1,16 @@
+.sub-content {
+  margin-top: -28rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.message-card {
+  padding: 28rpx;
+}
+
+.message-content {
+  margin-top: 10rpx;
+  color: var(--text-secondary);
+  font-size: 26rpx;
+  line-height: 1.65;
+}

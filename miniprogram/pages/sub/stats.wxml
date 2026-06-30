@@ -1,0 +1,23 @@
+<view class="page-container">
+  <view class="page-hero compact">
+    <view class="hero-title">学习统计</view>
+    <view class="hero-subtitle">用数据追踪练习节奏，找到下一次提升的切入点。</view>
+  </view>
+
+  <view class="container sub-content">
+    <view class="metric-grid stat-grid">
+      <view class="metric-card white-metric">
+        <view class="metric-value score-blue">{{overview.totalInterviews || 0}}</view>
+        <view class="metric-label">面试次数</view>
+      </view>
+      <view class="metric-card white-metric">
+        <view class="metric-value score-green">{{overview.avgScore || '0'}}</view>
+        <view class="metric-label">平均分数</view>
+      </view>
+      <view class="metric-card white-metric">
+        <view class="metric-value score-orange">{{overview.totalPractice || 0}}</view>
+        <view class="metric-label">练习总次数</view>
+      </view>
+    </view>
+  </view>
+</view>

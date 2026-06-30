@@ -1,0 +1,16 @@
+<view class="splash-page">
+  <view class="splash-bg"></view>
+  <view class="splash-content">
+    <view class="brand-mark">AI</view>
+    <view class="splash-title">AI面试模拟</view>
+    <view class="splash-subtitle">智能出题、实时训练、报告复盘，让每一次练习都更接近真实面试。</view>
+    <view class="splash-features">
+      <view class="feature-pill">岗位题库</view>
+      <view class="feature-pill">简历分析</view>
+      <view class="feature-pill">学习方案</view>
+    </view>
+  </view>
+  <view class="splash-action">
+    <button class="btn btn-primary btn-lg btn-block" bindtap="goToLogin">开始使用</button>
+  </view>
+</view>

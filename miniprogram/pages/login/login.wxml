@@ -1,0 +1,71 @@
+<view class="login-page" bindtap="hideKeyboard">
+  <view class="login-hero">
+    <view class="brand-mark">AI</view>
+    <view class="login-title">{{loginMode === 'account' ? '欢迎回来' : '创建账号'}}</view>
+    <view class="login-subtitle">{{loginMode === 'account' ? '继续你的面试训练计划' : '开启 AI 面试训练之旅'}}</view>
+  </view>
+
+  <view class="login-panel" catchtap="noop">
+    <view class="mode-tabs">
+      <view class="mode-tab {{loginMode === 'account' ? 'active' : ''}}" data-mode="account" bindtap="setMode">登录</view>
+      <view class="mode-tab {{loginMode !== 'account' ? 'active' : ''}}" data-mode="register" bindtap="setMode">注册</view>
+    </view>
+
+    <view class="field-group">
+      <view class="field-label">{{loginMode === 'account' ? '手机号 / 邮箱' : '手机号'}}</view>
+      <input
+        class="input-field"
+        placeholder="{{loginMode === 'account' ? '请输入手机号或邮箱' : '请输入手机号'}}"
+        value="{{account}}"
+        bindinput="onAccountInput"
+        bindconfirm="hideKeyboard"
+        confirm-type="done"
+        cursor-spacing="28"
+        adjust-position="{{true}}"
+        type="{{loginMode === 'account' ? 'text' : 'number'}}"
+        maxlength="50"
+      />
+    </view>
+
+    <view class="field-group">
+      <view class="field-label">密码</view>
+      <input
+        class="input-field"
+        placeholder="请输入至少 6 位密码"
+        value="{{password}}"
+        bindinput="onPasswordInput"
+        bindconfirm="hideKeyboard"
+        confirm-type="done"
+        cursor-spacing="28"
+        adjust-position="{{true}}"
+        password
+        maxlength="20"
+      />
+    </view>
+
+    <button
+      class="btn btn-primary btn-block btn-lg"
+      bindtap="handleLogin"
+      loading="{{loading}}"
+      disabled="{{loading}}"
+    >
+      {{loginMode === 'account' ? '登录' : '注册'}}
+    </button>
+
+    <view class="switch-line">
+      <text>{{loginMode === 'account' ? '还没有账号？' : '已有账号？'}}</text>
+      <text class="switch-link" bindtap="switchMode">{{loginMode === 'account' ? '立即注册' : '去登录'}}</text>
+    </view>
+
+    <view class="divider"><text>其他方式</text></view>
+
+    <button
+      class="btn btn-outline btn-block btn-lg wechat-btn"
+      bindtap="handleWechatLogin"
+      loading="{{loading}}"
+      disabled="{{loading}}"
+    >
+      微信一键登录
+    </button>
+  </view>
+</view>

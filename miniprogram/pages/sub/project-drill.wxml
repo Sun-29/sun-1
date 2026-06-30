@@ -1,0 +1,48 @@
+<view class="page-container" bindtap="hideKeyboard">
+  <view class="page-hero compact">
+    <view class="hero-title">项目深挖</view>
+    <view class="hero-subtitle">围绕项目背景、技术选型、难点和结果进行追问训练。</view>
+  </view>
+
+  <view class="container sub-content">
+    <view class="card form-card" catchtap="noop">
+      <view class="field-label">项目名称</view>
+      <input
+        class="input-field"
+        placeholder="请输入项目名称"
+        value="{{projectName}}"
+        bindinput="onNameInput"
+        bindconfirm="hideKeyboard"
+        confirm-type="done"
+        cursor-spacing="28"
+        adjust-position="{{true}}"
+      />
+      <view class="field-label spaced">项目描述（可选）</view>
+      <textarea
+        class="textarea-field"
+        placeholder="描述项目目标、职责、技术栈或难点..."
+        value="{{projectDesc}}"
+        bindinput="onDescInput"
+        show-confirm-bar="{{true}}"
+        cursor-spacing="120"
+        adjust-position="{{true}}"
+      />
+      <button class="btn btn-primary btn-block btn-lg submit-action" bindtap="startDrill">开始项目深挖</button>
+    </view>
+
+    <view class="section">
+      <view class="section-head">
+        <view class="section-title">训练记录</view>
+      </view>
+      <view wx:for="{{drills}}" wx:key="id" class="card">
+        <view class="list-row">
+          <view class="record-icon">项</view>
+          <view class="list-main">
+            <view class="list-title">{{item.project_name}}</view>
+            <view class="list-desc">{{item.created_at}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

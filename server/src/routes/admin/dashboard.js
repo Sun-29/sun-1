@@ -1,0 +1,11 @@
+﻿const router = require("express").Router();
+const ctrl = require("../../controllers/admin/dashboard.controller");
+const { authenticateAdmin } = require("../../middleware/auth");
+router.use(authenticateAdmin);
+router.get("/stats", ctrl.getStats);
+router.get("/user-trend", ctrl.getUserTrend);
+router.get("/interview-trend", ctrl.getInterviewTrend);
+router.get("/position-popularity", ctrl.getPositionPopularity);
+router.get("/score-distribution", ctrl.getScoreDistribution);
+router.get("/recent-activities", ctrl.getRecentActivities);
+module.exports = router;

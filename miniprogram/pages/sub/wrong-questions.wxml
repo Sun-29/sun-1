@@ -1,0 +1,17 @@
+<view class="page-container">
+  <view class="page-hero compact">
+    <view class="hero-title">错题本</view>
+    <view class="hero-subtitle">把薄弱题目重新拿出来练，直到真正掌握。</view>
+  </view>
+
+  <view class="container sub-content">
+    <view wx:for="{{wrongQuestions}}" wx:key="id" class="card wrong-card">
+      <view class="list-title">{{item.question_title || '题目'}}</view>
+      <view class="wrong-actions">
+        <button class="btn btn-outline btn-sm" bindtap="reviewAgain" data-id="{{item.id}}">再次复习</button>
+        <button class="btn btn-primary btn-sm" bindtap="markMastered" data-id="{{item.id}}">标记掌握</button>
+      </view>
+    </view>
+    <empty-state wx:if="{{!loading && wrongQuestions.length===0}}" text="暂无错题" icon="✓" />
+  </view>
+</view>

@@ -1,0 +1,21 @@
+.sub-content {
+  margin-top: -28rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.stat-grid {
+  gap: 18rpx;
+}
+
+.score-blue {
+  color: #2764e8;
+}
+
+.score-green {
+  color: #12b886;
+}
+
+.score-orange {
+  color: #f59f00;
+}

@@ -1,0 +1,10 @@
+<view class="nav-bar" style="background-color: {{backgroundColor}}">
+  <view class="nav-bar-content">
+    <view class="nav-bar-left" wx:if="{{showBack}}" bindtap="goBack">
+      <text class="back-icon" style="color: {{textColor}}">←</text>
+    </view>
+    <view class="nav-bar-left" wx:else></view>
+    <view class="nav-bar-title" style="color: {{textColor}}">{{title}}</view>
+    <view class="nav-bar-right"></view>
+  </view>
+</view>

@@ -1,0 +1,78 @@
+.splash-page {
+  position: relative;
+  min-height: 100vh;
+  padding: 120rpx 44rpx calc(64rpx + env(safe-area-inset-bottom));
+  overflow: hidden;
+  color: #fff;
+  background: #0f2f77;
+}
+
+.splash-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background:
+    radial-gradient(circle at 78% 16%, rgba(18, 184, 134, 0.55), transparent 28%),
+    radial-gradient(circle at 16% 72%, rgba(245, 159, 0, 0.24), transparent 26%),
+    linear-gradient(155deg, #1f5fe5 0%, #147ac0 54%, #0f8c72 100%);
+}
+
+.splash-content {
+  position: relative;
+  z-index: 1;
+}
+
+.brand-mark {
+  width: 132rpx;
+  height: 132rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 36rpx;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1rpx solid rgba(255, 255, 255, 0.28);
+  font-size: 46rpx;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.splash-title {
+  margin-top: 56rpx;
+  font-size: 58rpx;
+  line-height: 1.12;
+  font-weight: 900;
+}
+
+.splash-subtitle {
+  width: 560rpx;
+  max-width: 100%;
+  margin-top: 24rpx;
+  font-size: 29rpx;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.splash-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+  margin-top: 40rpx;
+}
+
+.feature-pill {
+  padding: 14rpx 22rpx;
+  border-radius: 999rpx;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.16);
+  font-size: 24rpx;
+}
+
+.splash-action {
+  position: absolute;
+  left: 44rpx;
+  right: 44rpx;
+  bottom: calc(64rpx + env(safe-area-inset-bottom));
+  z-index: 1;
+}

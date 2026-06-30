@@ -1,0 +1,10 @@
+﻿const router = require("express").Router();
+const ctrl = require("../../controllers/admin/user.controller");
+const { authenticateAdmin } = require("../../middleware/auth");
+router.use(authenticateAdmin);
+router.get("/stats", ctrl.getStats);
+router.get("/", ctrl.getList);
+router.get("/:id", ctrl.getDetail);
+router.put("/:id/status", ctrl.updateStatus);
+router.delete("/:id", ctrl.delete);
+module.exports = router;

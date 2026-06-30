@@ -1,0 +1,54 @@
+<view class="page-container interview-page">
+  <view class="page-hero compact">
+    <view class="hero-title">创建模拟面试</view>
+    <view class="hero-subtitle">选择岗位、难度和题量，AI 将生成一套贴近真实场景的面试题。</view>
+  </view>
+
+  <view class="container interview-content">
+    <view class="section">
+      <view class="section-head">
+        <view class="section-title">选择岗位</view>
+      </view>
+      <view class="position-grid">
+        <view wx:for="{{positions}}" wx:key="id" class="option-card {{selectedPosition.id === item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="selectPosition">
+          <view class="option-title">{{item.name}}</view>
+          <view class="option-desc">{{item.salary_range || '岗位专项训练'}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-head">
+        <view class="section-title">选择难度</view>
+      </view>
+      <view class="difficulty-grid">
+        <view wx:for="{{difficulties}}" wx:key="value" class="option-card difficulty-card {{difficulty === item.value ? 'active' : ''}}" data-value="{{item.value}}" bindtap="selectDifficulty">
+          <view class="option-title">{{item.label}}</view>
+          <view class="option-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="card range-panel">
+      <view class="range-row">
+        <view>
+          <view class="range-title">面试时长</view>
+          <view class="range-desc">建议保持完整表达节奏</view>
+        </view>
+        <view class="range-value">{{duration}} 分钟</view>
+      </view>
+      <slider min="15" max="60" step="5" value="{{duration}}" bindchange="setDuration" activeColor="#2764E8" backgroundColor="#E8EDF5" block-size="22" />
+
+      <view class="range-row second">
+        <view>
+          <view class="range-title">题目数量</view>
+          <view class="range-desc">覆盖知识、场景与项目追问</view>
+        </view>
+        <view class="range-value">{{questionCount}} 题</view>
+      </view>
+      <slider min="3" max="10" step="1" value="{{questionCount}}" bindchange="setQuestionCount" activeColor="#2764E8" backgroundColor="#E8EDF5" block-size="22" />
+    </view>
+
+    <button class="btn btn-primary btn-block btn-lg" bindtap="startInterview" disabled="{{!selectedPosition}}">开始面试</button>
+  </view>
+</view>

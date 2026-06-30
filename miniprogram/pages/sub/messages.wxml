@@ -1,0 +1,20 @@
+<view class="page-container">
+  <view class="page-hero compact">
+    <view class="hero-title">消息通知</view>
+    <view class="hero-subtitle">系统提醒、学习计划和面试反馈都会汇总在这里。</view>
+  </view>
+
+  <view class="container sub-content">
+    <view class="section-head">
+      <view class="section-title">消息列表</view>
+      <view wx:if="{{unreadCount > 0}}" class="section-action" bindtap="markAllRead">全部已读</view>
+    </view>
+
+    <view wx:for="{{messages}}" wx:key="id" class="card message-card" bindtap="markRead" data-id="{{item.id}}">
+      <view class="list-title">{{item.title || '消息'}}</view>
+      <view class="message-content">{{item.content}}</view>
+      <view class="list-desc">{{item.created_at}}</view>
+    </view>
+    <empty-state wx:if="{{messages.length===0}}" text="暂无消息" />
+  </view>
+</view>

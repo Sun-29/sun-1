@@ -1,0 +1,42 @@
+<view class="page-container tab-page">
+  <view class="page-hero compact ranking-hero">
+    <view class="hero-title">排行榜</view>
+    <view class="hero-subtitle">看看大家的训练表现，也给自己一点向前的动力。</view>
+  </view>
+
+  <view class="container ranking-content">
+    <view class="type-tabs">
+      <view wx:for="{{types}}" wx:key="value" class="type-tab {{type === item.value ? 'active' : ''}}" data-type="{{item.value}}" bindtap="switchType">{{item.label}}</view>
+    </view>
+
+    <view wx:if="{{myRank}}" class="card my-rank-card">
+      <view class="list-row">
+        <image class="avatar rank-avatar" src="{{myRank.user.avatar_url || '/images/default-avatar.png'}}" mode="aspectFill" />
+        <view class="list-main">
+          <view class="list-title">{{myRank.user.nickname}}</view>
+          <view class="list-desc">{{myRank.user.school || '我的排名'}}</view>
+        </view>
+        <view class="my-rank-score">
+          <view>{{myRank.total_score || '0'}}</view>
+          <text>#{{myRank.total_rank || '-'}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:for="{{rankings}}" wx:key="id" class="card rank-card">
+      <view class="list-row">
+        <view class="rank-no {{index < 3 ? 'top' : ''}}">{{index + 1}}</view>
+        <image class="avatar rank-avatar" src="{{item.user.avatar_url || '/images/default-avatar.png'}}" mode="aspectFill" />
+        <view class="list-main">
+          <view class="list-title">{{item.user.nickname}}</view>
+          <view class="list-desc">{{item.total_score}}分 · {{item.practice_count}}次练习</view>
+        </view>
+        <view class="rank-tag">#{{item.total_rank || '-'}}</view>
+      </view>
+    </view>
+
+    <empty-state wx:if="{{rankings.length === 0}}" text="暂无排行数据" />
+  </view>
+
+  <tab-bar active="ranking" />
+</view>

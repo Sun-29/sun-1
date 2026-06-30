@@ -1,0 +1,54 @@
+<view class="page-container room-page" bindtap="hideKeyboard">
+  <view wx:if="{{loading}}" class="state-panel">
+    <view class="state-icon">AI</view>
+    <view class="state-title">正在准备题目</view>
+    <view class="state-desc">AI 正在根据岗位生成面试问题...</view>
+  </view>
+
+  <view wx:elif="{{isCompleted}}" class="state-panel">
+    <view class="state-icon success">✓</view>
+    <view class="state-title">面试已完成</view>
+    <view class="state-desc">所有题目已回答完毕，可以查看完整报告。</view>
+    <button class="btn btn-primary btn-lg state-btn" bindtap="completeInterview">查看面试报告</button>
+  </view>
+
+  <view wx:else class="container">
+    <view class="room-top">
+      <view>
+        <view class="room-kicker">第 {{currentIndex + 1}} / {{totalCount}} 题</view>
+        <view class="room-title">请组织你的回答</view>
+      </view>
+      <view wx:if="{{isFollowUp}}" class="tag tag-warning">AI追问</view>
+    </view>
+    <progress percent="{{(currentIndex / totalCount) * 100}}" stroke-width="6" activeColor="#2764E8" backgroundColor="#E8EDF5" border-radius="8" />
+
+    <view class="card question-card">
+      <view class="question-type">
+        {{currentDetail.question_type === 'basic' ? '基础知识' : currentDetail.question_type === 'scenario' ? '场景分析' : currentDetail.question_type === 'project' ? '项目经验' : '开放问题'}}
+      </view>
+      <view class="question-text">{{currentDetail.question_content}}</view>
+    </view>
+
+    <view class="card answer-card" catchtap="noop">
+      <view class="answer-head">
+        <view class="section-title">你的回答</view>
+        <button class="btn btn-outline btn-sm" bindtap="startRecording">{{isRecording ? '录音中' : '语音回答'}}</button>
+      </view>
+      <textarea
+        class="textarea-field"
+        placeholder="请输入你的回答，尽量按背景、行动、结果来组织..."
+        bindinput="onAnswerInput"
+        value="{{answer}}"
+        auto-height
+        show-confirm-bar="{{true}}"
+        cursor-spacing="120"
+        adjust-position="{{true}}"
+      />
+    </view>
+
+    <view class="action-bar">
+      <button class="btn btn-plain" bindtap="skipQuestion">跳过</button>
+      <button class="btn btn-primary submit-btn" bindtap="submitAnswer" disabled="{{!answer}}">提交回答</button>
+    </view>
+  </view>
+</view>

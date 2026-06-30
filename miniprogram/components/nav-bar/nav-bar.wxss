@@ -1,0 +1,32 @@
+.nav-bar {
+  padding-top: env(safe-area-inset-top);
+  color: #fff;
+  box-shadow: 0 10rpx 28rpx rgba(39, 100, 232, 0.16);
+}
+
+.nav-bar-content {
+  height: 92rpx;
+  display: grid;
+  grid-template-columns: 92rpx 1fr 92rpx;
+  align-items: center;
+  padding: 0 18rpx;
+}
+
+.nav-bar-left,
+.nav-bar-right {
+  height: 92rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-icon {
+  font-size: 38rpx;
+  font-weight: 800;
+}
+
+.nav-bar-title {
+  text-align: center;
+  font-size: 31rpx;
+  font-weight: 800;
+}

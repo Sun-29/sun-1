@@ -1,0 +1,91 @@
+.ranking-content {
+  margin-top: -28rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.type-tabs {
+  height: 74rpx;
+  padding: 8rpx;
+  display: flex;
+  gap: 8rpx;
+  border-radius: 24rpx;
+  background: #eaf0f8;
+  margin-bottom: 22rpx;
+}
+
+.type-tab {
+  flex: 1;
+  height: 58rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18rpx;
+  color: var(--text-secondary);
+  font-size: 25rpx;
+  font-weight: 800;
+}
+
+.type-tab.active {
+  color: #2764e8;
+  background: #fff;
+  box-shadow: 0 8rpx 24rpx rgba(30, 45, 78, 0.08);
+}
+
+.my-rank-card {
+  background:
+    radial-gradient(circle at 90% 0%, rgba(18, 184, 134, 0.18), transparent 32%),
+    #fff;
+  border-color: rgba(39, 100, 232, 0.2);
+}
+
+.rank-avatar {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.my-rank-score {
+  min-width: 104rpx;
+  text-align: right;
+  color: #2764e8;
+  font-size: 34rpx;
+  font-weight: 900;
+}
+
+.my-rank-score text {
+  display: block;
+  margin-top: 4rpx;
+  color: var(--text-secondary);
+  font-size: 22rpx;
+}
+
+.rank-card {
+  padding: 22rpx 24rpx;
+}
+
+.rank-no {
+  width: 50rpx;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 16rpx;
+  color: #8a96a8;
+  background: #eef2f7;
+  font-size: 24rpx;
+  font-weight: 900;
+}
+
+.rank-no.top {
+  color: #a16300;
+  background: #fff7e6;
+}
+
+.rank-tag {
+  min-width: 66rpx;
+  text-align: right;
+  color: var(--text-muted);
+  font-size: 24rpx;
+  font-weight: 700;
+}

@@ -1,0 +1,94 @@
+<view class="page-container">
+  <view wx:if="{{!showDetail}}">
+    <view class="page-hero compact">
+      <view class="hero-title">学习方案</view>
+      <view class="hero-subtitle">面试报告会生成阶段化学习路径，帮助你按优先级补齐短板。</view>
+    </view>
+
+    <view class="container sub-content">
+      <view wx:if="{{paths.length === 0}}">
+        <empty-state text="暂无学习方案" icon="路">
+          <view class="empty-tip">完成面试后，在报告中点击“生成学习方案”。</view>
+        </empty-state>
+      </view>
+
+      <view wx:for="{{paths}}" wx:key="id" class="card path-card" bindtap="viewPath" data-id="{{item.id}}">
+        <view class="list-row">
+          <view class="path-icon">路</view>
+          <view class="list-main">
+            <view class="list-title">{{item.title || '学习方案'}}</view>
+            <view class="list-desc">{{item.total_steps || 0}}个阶段 · {{item.progress || 0}}%完成</view>
+          </view>
+          <view class="chevron">›</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{showDetail && currentPath}}">
+    <view class="detail-nav">
+      <view class="back-btn" bindtap="closeDetail">←</view>
+      <view class="detail-title">方案详情</view>
+    </view>
+
+    <view wx:if="{{currentPath.path_data}}" class="container detail-content">
+      <view class="path-hero">
+        <view class="path-title">{{currentPath.path_data.title || currentPath.title}}</view>
+        <view class="path-desc">{{currentPath.path_data.description}}</view>
+        <view class="path-meta">
+          <view>{{currentPath.path_data.estimatedWeeks || 8}}周</view>
+          <view>{{currentPath.path_data.steps ? currentPath.path_data.steps.length : 0}}个阶段</view>
+        </view>
+      </view>
+
+      <view wx:for="{{currentPath.path_data.steps}}" wx:key="order" class="card step-card">
+        <view class="step-head">
+          <view class="step-no">{{item.order}}</view>
+          <view class="list-main">
+            <view class="step-title">{{item.title}}</view>
+            <view class="list-desc">{{item.durationDays || 7}}天 · {{item.goal || '阶段目标'}}</view>
+          </view>
+        </view>
+
+        <view class="paragraph">{{item.description}}</view>
+
+        <view wx:if="{{item.dailyPlan}}" class="info-box">
+          <view class="info-title">每日安排</view>
+          <view class="info-text">{{item.dailyPlan}}</view>
+        </view>
+
+        <view wx:if="{{item.keyPoints && item.keyPoints.length}}" class="block">
+          <view class="block-title">重点掌握</view>
+          <view wx:for="{{item.keyPoints}}" wx:key="*this" wx:for-item="kp" class="bullet-row">✓ {{kp}}</view>
+        </view>
+
+        <view wx:if="{{item.topics && item.topics.length}}" class="block">
+          <view class="block-title">学习知识点</view>
+          <view class="tag-cloud">
+            <view wx:for="{{item.topics}}" wx:key="*this" wx:for-item="topic" class="tag tag-primary">{{topic}}</view>
+          </view>
+        </view>
+
+        <view wx:if="{{item.practiceTask}}" class="info-box practice">
+          <view class="info-title">实战任务</view>
+          <view class="info-text">{{item.practiceTask}}</view>
+        </view>
+
+        <view wx:if="{{item.resources && item.resources.length}}" class="block">
+          <view class="block-title">推荐资源</view>
+          <view wx:for="{{item.resources}}" wx:key="name" wx:for-item="res" class="resource-row">
+            <view class="resource-name">{{res.type === 'book' ? '书籍' : res.type === 'video' ? '视频' : '资料'}} · {{res.name}}</view>
+            <view wx:if="{{res.describe}}" class="resource-desc">{{res.describe}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:else class="container">
+      <view class="card fallback-card">
+        <view class="path-icon center">路</view>
+        <view class="list-title">{{currentPath.title}}</view>
+      </view>
+    </view>
+  </view>
+</view>

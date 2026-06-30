@@ -1,0 +1,33 @@
+<view class="page-container tab-page">
+  <view class="page-hero compact">
+    <view class="hero-title">题库练习</view>
+    <view class="hero-subtitle">按技术方向筛选题目，收藏高频问题，形成自己的面试清单。</view>
+  </view>
+
+  <view class="container question-content">
+    <scroll-view scroll-x class="category-scroll" show-scrollbar="{{false}}">
+      <view class="category-pill {{!activeCategory ? 'active' : ''}}" data-id="" bindtap="selectCategory">全部</view>
+      <view wx:for="{{categories}}" wx:key="id" class="category-pill {{activeCategory === item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="selectCategory">{{item.name}}</view>
+    </scroll-view>
+
+    <view wx:for="{{questions}}" wx:key="id" class="card question-card">
+      <view class="list-row">
+        <view class="question-index">{{index + 1}}</view>
+        <view class="list-main">
+          <view class="list-title">{{item.title}}</view>
+          <view class="question-tags">
+            <view class="tag tag-primary">{{item.type}}</view>
+            <view class="tag tag-warning">{{item.difficulty === 'junior' ? '初级' : item.difficulty === 'mid' ? '中级' : '高级'}}</view>
+          </view>
+        </view>
+        <view class="favorite-btn {{item.isFavorited ? 'active' : ''}}" bindtap="toggleFavorite" data-id="{{item.id}}">{{item.isFavorited ? '藏' : '收'}}</view>
+      </view>
+    </view>
+
+    <view wx:if="{{loading}}" class="loading-more">加载中...</view>
+    <view wx:elif="{{!hasMore && questions.length > 0}}" class="loading-more">没有更多了</view>
+    <empty-state wx:if="{{!loading && questions.length === 0}}" text="暂无题目" />
+  </view>
+
+  <tab-bar active="question" />
+</view>

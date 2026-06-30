@@ -1,0 +1,16 @@
+﻿const router = require("express").Router();
+const ctrl = require("../../controllers/admin/question.controller");
+const { authenticateAdmin } = require("../../middleware/auth");
+router.use(authenticateAdmin);
+router.get("/categories", ctrl.getCategories);
+router.post("/categories", ctrl.createCategory);
+router.put("/categories/:id", ctrl.updateCategory);
+router.delete("/categories/:id", ctrl.deleteCategory);
+router.get("/export", ctrl.exportQuestions);
+router.get("/", ctrl.getList);
+router.get("/:id", ctrl.getDetail);
+router.post("/", ctrl.create);
+router.put("/:id", ctrl.update);
+router.delete("/:id", ctrl.delete);
+router.post("/batch-import", ctrl.batchImport);
+module.exports = router;

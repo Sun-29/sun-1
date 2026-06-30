@@ -1,0 +1,157 @@
+<view class="page-container">
+  <view wx:if="{{!showDetail}}">
+    <view class="page-hero compact">
+      <view class="hero-title">简历分析</view>
+      <view class="hero-subtitle">上传 PDF / DOCX / DOC，AI 会从内容、格式、经验和岗位匹配度给出建议。</view>
+    </view>
+
+    <view class="container sub-content">
+      <view class="upload-card">
+        <view class="upload-icon">简</view>
+        <view class="upload-title">上传简历并分析</view>
+        <view class="upload-desc">支持 PDF / DOCX / DOC，最大 20MB</view>
+        <button class="btn btn-primary btn-block btn-lg" bindtap="uploadResume" loading="{{uploading}}" disabled="{{uploading}}">选择文件</button>
+      </view>
+
+      <view class="section">
+        <view class="section-head">
+          <view class="section-title">分析记录</view>
+        </view>
+
+        <view wx:if="{{analyses.length === 0}}">
+          <empty-state text="暂无简历分析记录" icon="简" />
+        </view>
+
+        <view wx:for="{{analyses}}" wx:key="id" class="card" bindtap="viewDetail" data-id="{{item.id}}">
+          <view class="list-row">
+            <view class="file-icon">DOC</view>
+            <view class="list-main">
+              <view class="list-title">{{item.file_name || '简历文件'}}</view>
+              <view class="list-desc">
+                <text wx:if="{{item.overall_score}}">综合评分 {{item.overall_score}}分</text>
+                <text wx:else>待分析</text>
+                <text> · {{item.created_at}}</text>
+              </view>
+            </view>
+            <view class="chevron">›</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{showDetail && currentAnalysis}}">
+    <view class="detail-nav">
+      <view class="back-btn" bindtap="closeDetail">←</view>
+      <view class="detail-title">分析报告</view>
+    </view>
+
+    <view class="container detail-content" wx:if="{{currentAnalysis.analysis_result}}">
+      <view class="score-hero">
+        <view class="score-label">综合评分</view>
+        <view class="score-number">{{currentAnalysis.overall_score || currentAnalysis.analysis_result.overallScore || '-'}}</view>
+        <view class="score-meta">{{currentAnalysis.match_position || '通用评估'}}</view>
+      </view>
+
+      <view class="card">
+        <view class="section-title">维度评分</view>
+        <view class="resume-score-row">
+          <view>
+            <view class="resume-score-title">内容质量</view>
+            <view wx:if="{{currentAnalysis.analysis_result.contentComment}}" class="resume-score-desc">{{currentAnalysis.analysis_result.contentComment}}</view>
+          </view>
+          <view class="{{currentAnalysis.content_score >= 80 ? 'score-high' : currentAnalysis.content_score >= 60 ? 'score-mid' : 'score-low'}} score-pill">{{currentAnalysis.content_score || currentAnalysis.analysis_result.contentScore}}分</view>
+        </view>
+        <view class="resume-score-row">
+          <view>
+            <view class="resume-score-title">格式规范</view>
+            <view wx:if="{{currentAnalysis.analysis_result.formatComment}}" class="resume-score-desc">{{currentAnalysis.analysis_result.formatComment}}</view>
+          </view>
+          <view class="{{currentAnalysis.format_score >= 80 ? 'score-high' : currentAnalysis.format_score >= 60 ? 'score-mid' : 'score-low'}} score-pill">{{currentAnalysis.format_score || currentAnalysis.analysis_result.formatScore}}分</view>
+        </view>
+        <view class="resume-score-row">
+          <view>
+            <view class="resume-score-title">经验展示</view>
+            <view wx:if="{{currentAnalysis.analysis_result.experienceComment}}" class="resume-score-desc">{{currentAnalysis.analysis_result.experienceComment}}</view>
+          </view>
+          <view class="{{(currentAnalysis.analysis_result.experienceScore || 70) >= 80 ? 'score-high' : (currentAnalysis.analysis_result.experienceScore || 70) >= 60 ? 'score-mid' : 'score-low'}} score-pill">{{currentAnalysis.analysis_result.experienceScore || 70}}分</view>
+        </view>
+        <view class="resume-score-row last">
+          <view>
+            <view class="resume-score-title">岗位匹配度</view>
+            <view wx:if="{{currentAnalysis.analysis_result.matchComment}}" class="resume-score-desc">{{currentAnalysis.analysis_result.matchComment}}</view>
+          </view>
+          <view class="{{currentAnalysis.match_score >= 80 ? 'score-high' : currentAnalysis.match_score >= 60 ? 'score-mid' : 'score-low'}} score-pill">{{currentAnalysis.match_score || currentAnalysis.analysis_result.matchScore}}分</view>
+        </view>
+      </view>
+
+      <view wx:if="{{currentAnalysis.strengthList.length}}" class="card">
+        <view class="section-title">优势亮点</view>
+        <view wx:for="{{currentAnalysis.strengthList}}" wx:key="*this" wx:for-item="s" class="bullet-row">{{index + 1}}. {{s}}</view>
+      </view>
+
+      <view wx:if="{{currentAnalysis.weaknessList.length}}" class="card">
+        <view class="section-title">问题诊断</view>
+        <view wx:for="{{currentAnalysis.weaknessList}}" wx:key="*this" wx:for-item="w" class="bullet-row">{{index + 1}}. {{w}}</view>
+      </view>
+
+      <view wx:if="{{currentAnalysis.analysis_result.contentSuggestions && currentAnalysis.analysis_result.contentSuggestions.length}}" class="card">
+        <view class="section-title">内容优化</view>
+        <view wx:for="{{currentAnalysis.analysis_result.contentSuggestions}}" wx:key="*this" wx:for-item="cs" class="bullet-row">• {{cs}}</view>
+      </view>
+
+      <view wx:if="{{currentAnalysis.analysis_result.skillSuggestions && currentAnalysis.analysis_result.skillSuggestions.length}}" class="card">
+        <view class="section-title">技能补充</view>
+        <view wx:for="{{currentAnalysis.analysis_result.skillSuggestions}}" wx:key="*this" wx:for-item="ss" class="bullet-row">• {{ss}}</view>
+      </view>
+
+      <view wx:if="{{currentAnalysis.analysis_result.skillTags && currentAnalysis.analysis_result.skillTags.length}}" class="card">
+        <view class="section-title">技能评估</view>
+        <view class="tag-cloud">
+          <view wx:for="{{currentAnalysis.analysis_result.skillTags}}" wx:key="name" wx:for-item="sk" class="tag tag-primary">{{sk.name}} · {{sk.level}}</view>
+        </view>
+      </view>
+
+      <view wx:if="{{currentAnalysis.analysis_result.missingSkills && currentAnalysis.analysis_result.missingSkills.length}}" class="card">
+        <view class="section-title">缺失技能</view>
+        <view class="tag-cloud">
+          <view wx:for="{{currentAnalysis.analysis_result.missingSkills}}" wx:key="*this" wx:for-item="ms" class="tag tag-danger">{{ms}}</view>
+        </view>
+      </view>
+
+      <view wx:if="{{currentAnalysis.analysis_result.formatSuggestions && currentAnalysis.analysis_result.formatSuggestions.length}}" class="card">
+        <view class="section-title">格式调整</view>
+        <view wx:for="{{currentAnalysis.analysis_result.formatSuggestions}}" wx:key="*this" wx:for-item="fs" class="bullet-row">• {{fs}}</view>
+      </view>
+
+      <view wx:if="{{currentAnalysis.analysis_result.targetedSuggestions && currentAnalysis.analysis_result.targetedSuggestions.length}}" class="card">
+        <view class="section-title">岗位针对性建议</view>
+        <view wx:for="{{currentAnalysis.analysis_result.targetedSuggestions}}" wx:key="*this" wx:for-item="ts" class="bullet-row">• {{ts}}</view>
+      </view>
+
+      <view wx:if="{{currentAnalysis.analysis_result.education}}" class="card">
+        <view class="section-title">教育背景评估</view>
+        <view class="paragraph">{{currentAnalysis.analysis_result.education}}</view>
+      </view>
+
+      <view wx:if="{{currentAnalysis.analysis_result.experience}}" class="card">
+        <view class="section-title">经历亮点</view>
+        <view class="paragraph">{{currentAnalysis.analysis_result.experience}}</view>
+      </view>
+
+      <view wx:if="{{currentAnalysis.analysis_result.improvementPlan && currentAnalysis.analysis_result.improvementPlan.length}}" class="card">
+        <view class="section-title">改进计划</view>
+        <view wx:for="{{currentAnalysis.analysis_result.improvementPlan}}" wx:key="priority" wx:for-item="plan" class="plan-row">
+          <view class="plan-title">#{{plan.priority}} {{plan.title}}</view>
+          <view class="paragraph">{{plan.action}}</view>
+          <view class="plan-result">预期效果：{{plan.expectedResult}}</view>
+        </view>
+      </view>
+
+      <view wx:if="{{currentAnalysis.analysis_result.interviewPrep && currentAnalysis.analysis_result.interviewPrep.length}}" class="card">
+        <view class="section-title">面试准备建议</view>
+        <view wx:for="{{currentAnalysis.analysis_result.interviewPrep}}" wx:key="*this" wx:for-item="ip" class="bullet-row">• {{ip}}</view>
+      </view>
+    </view>
+  </view>
+</view>

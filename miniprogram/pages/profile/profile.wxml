@@ -1,0 +1,38 @@
+<view class="page-container tab-page">
+  <view class="page-hero profile-hero">
+    <image class="avatar profile-avatar" src="{{userInfo.avatar_url || '/images/default-avatar.png'}}" mode="aspectFill" />
+    <view class="profile-name">{{userInfo.nickname || '未设置昵称'}}</view>
+    <view class="profile-desc">{{userInfo.school || '未设置学校'}} · {{userInfo.job_direction || '未设置方向'}}</view>
+  </view>
+
+  <view class="container profile-content">
+    <view class="metric-grid profile-metrics">
+      <view class="metric-card white-metric">
+        <view class="metric-value score-blue">{{stats.totalInterviews || 0}}</view>
+        <view class="metric-label">面试次数</view>
+      </view>
+      <view class="metric-card white-metric">
+        <view class="metric-value score-green">{{stats.avgScore || '0'}}</view>
+        <view class="metric-label">平均分</view>
+      </view>
+      <view class="metric-card white-metric">
+        <view class="metric-value score-orange">{{stats.totalPractice || 0}}</view>
+        <view class="metric-label">练习次数</view>
+      </view>
+    </view>
+
+    <view class="card menu-card">
+      <view wx:for="{{menus}}" wx:key="title" class="menu-row" bindtap="goToPage" data-url="{{item.url}}">
+        <view class="menu-left">
+          <view class="menu-icon">{{item.icon}}</view>
+          <view class="menu-title">{{item.title}}</view>
+        </view>
+        <view class="chevron">›</view>
+      </view>
+    </view>
+
+    <button class="btn btn-outline btn-block logout-btn" bindtap="handleLogout">退出登录</button>
+  </view>
+
+  <tab-bar active="profile" />
+</view>

@@ -1,0 +1,75 @@
+<view class="page-container tab-page">
+  <view class="page-hero home-hero">
+    <view class="flex-between">
+      <view class="home-user">
+        <view class="hero-title">{{userInfo.nickname || '你好'}}，开始训练</view>
+        <view class="hero-subtitle">{{userInfo.school || 'AI面试模拟系统'}} · 今日适合来一场高质量复盘</view>
+      </view>
+      <image class="avatar avatar-lg home-avatar" src="{{userInfo.avatar_url || '/images/default-avatar.png'}}" mode="aspectFill" />
+    </view>
+
+    <view class="metric-grid home-metrics">
+      <view class="metric-card">
+        <view class="metric-value">{{stats.totalInterviews || 0}}</view>
+        <view class="metric-label">面试次数</view>
+      </view>
+      <view class="metric-card">
+        <view class="metric-value">{{stats.avgScore || '0'}}</view>
+        <view class="metric-label">平均分</view>
+      </view>
+      <view class="metric-card">
+        <view class="metric-value">{{stats.rank || '-'}}</view>
+        <view class="metric-label">当前排名</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="container home-content">
+    <view class="start-card">
+      <view class="start-copy">
+        <view class="start-title">AI模拟面试</view>
+        <view class="start-desc">按岗位、难度和题量生成专属练习。</view>
+      </view>
+      <button class="btn btn-primary start-btn" bindtap="startInterview">开始</button>
+    </view>
+
+    <view class="section">
+      <view class="section-head">
+        <view class="section-title">核心训练</view>
+      </view>
+      <view class="quick-grid">
+        <view wx:for="{{banners}}" wx:key="title" class="quick-card" bindtap="goToPage" data-url="{{item.url}}">
+          <view class="quick-icon" style="background:{{item.color}}">{{item.icon}}</view>
+          <view class="quick-title">{{item.title}}</view>
+          <view class="quick-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-head">
+        <view class="section-title">最近面试</view>
+        <view class="section-action" bindtap="goToPage" data-url="/pages/sub/stats">查看更多</view>
+      </view>
+
+      <view wx:if="{{recentInterviews.length > 0}}">
+        <view wx:for="{{recentInterviews}}" wx:key="id" class="card interview-card" bindtap="goToInterview" data-id="{{item.id}}">
+          <view class="list-row">
+            <view class="record-icon">面</view>
+            <view class="list-main">
+              <view class="list-title">{{item.title || '面试记录'}}</view>
+              <view class="list-desc">{{item.created_at}}</view>
+            </view>
+            <view class="record-score">
+              <view class="{{item.total_score >= 80 ? 'score-high' : item.total_score >= 60 ? 'score-mid' : 'score-low'}}">{{item.total_score || '-'}}</view>
+              <view class="tag tag-primary">{{item.status === 'completed' ? '已完成' : item.status === 'ongoing' ? '进行中' : '待开始'}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <empty-state wx:else text="暂无面试记录" />
+    </view>
+  </view>
+
+  <tab-bar active="home" />
+</view>

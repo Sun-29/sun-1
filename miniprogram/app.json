@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/home/home",
+    "pages/interview/interview",
+    "pages/interview/interview-room",
+    "pages/interview/report",
+    "pages/question-bank/question-bank",
+    "pages/ranking/ranking",
+    "pages/profile/profile"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/sub",
+      "name": "features",
+      "pages": [
+        "resume",
+        "learning-path",
+        "wrong-questions",
+        "project-drill",
+        "stats",
+        "messages"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2764E8",
+    "navigationBarTitleText": "AI面试模拟",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f6f8fc"
+  },
+  "sitemapLocation": "sitemap.json"
+}

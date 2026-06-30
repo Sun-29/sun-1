@@ -1,0 +1,35 @@
+<view class="page-container report-page">
+  <view wx:if="{{loading}}" class="state-panel">
+    <view class="state-icon">分</view>
+    <view class="state-title">加载报告中</view>
+    <view class="state-desc">正在整理你的面试表现...</view>
+  </view>
+
+  <view wx:else>
+    <view class="page-hero compact report-hero">
+      <view class="hero-subtitle">综合得分</view>
+      <view class="report-score {{report.total_score >= 80 ? 'score-high' : report.total_score >= 60 ? 'score-mid' : 'score-low'}}">{{report.total_score}}</view>
+      <view class="hero-subtitle">{{interview.title || '面试报告'}}</view>
+    </view>
+
+    <view class="container report-content">
+      <view class="card">
+        <view class="section-title">评分明细</view>
+        <view wx:for="{{scores}}" wx:key="label" class="score-row">
+          <view class="score-label">{{item.label}}</view>
+          <view class="score-progress">
+            <progress percent="{{item.score}}" stroke-width="7" activeColor="{{item.score>=80?'#12B886':item.score>=60?'#F59F00':'#EF4444'}}" backgroundColor="#E8EDF5" border-radius="8" />
+          </view>
+          <view class="score-number">{{item.score}}</view>
+        </view>
+      </view>
+
+      <view wx:if="{{report.detailed_feedback}}" class="card feedback-card">
+        <view class="section-title">详细反馈</view>
+        <view class="feedback-text">{{report.detailed_feedback}}</view>
+      </view>
+
+      <button class="btn btn-primary btn-block btn-lg" bindtap="generateLearningPath">生成学习方案</button>
+    </view>
+  </view>
+</view>

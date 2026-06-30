@@ -1,0 +1,209 @@
+.sub-content {
+  margin-top: -28rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.empty-tip {
+  margin-top: 12rpx;
+  color: var(--text-muted);
+  font-size: 24rpx;
+}
+
+.path-card {
+  padding: 24rpx;
+}
+
+.path-icon {
+  width: 70rpx;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 20rpx;
+  color: #2764e8;
+  background: #edf4ff;
+  font-size: 25rpx;
+  font-weight: 900;
+}
+
+.detail-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 104rpx;
+  padding: 18rpx 28rpx;
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  background: rgba(246, 248, 252, 0.96);
+  backdrop-filter: blur(12rpx);
+}
+
+.back-btn {
+  width: 66rpx;
+  height: 66rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
+  background: #fff;
+  color: var(--text-primary);
+  font-size: 34rpx;
+  box-shadow: var(--shadow);
+}
+
+.detail-title {
+  font-size: 32rpx;
+  font-weight: 900;
+}
+
+.detail-content {
+  padding-top: 0;
+}
+
+.path-hero {
+  padding: 34rpx;
+  color: #fff;
+  border-radius: 30rpx;
+  background:
+    radial-gradient(circle at 88% 0%, rgba(245, 159, 0, 0.28), transparent 34%),
+    linear-gradient(135deg, #2764e8, #12b886);
+  box-shadow: 0 22rpx 52rpx rgba(39, 100, 232, 0.22);
+  margin-bottom: 22rpx;
+}
+
+.path-title {
+  font-size: 38rpx;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.path-desc {
+  margin-top: 14rpx;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 25rpx;
+  line-height: 1.7;
+}
+
+.path-meta {
+  display: flex;
+  gap: 14rpx;
+  margin-top: 22rpx;
+}
+
+.path-meta view {
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 23rpx;
+}
+
+.step-card {
+  padding: 28rpx;
+}
+
+.step-head {
+  display: flex;
+  gap: 18rpx;
+  align-items: flex-start;
+}
+
+.step-no {
+  width: 58rpx;
+  height: 58rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 18rpx;
+  color: #fff;
+  background: #2764e8;
+  font-size: 25rpx;
+  font-weight: 900;
+}
+
+.step-title {
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.paragraph {
+  margin-top: 18rpx;
+  color: var(--text-secondary);
+  font-size: 26rpx;
+  line-height: 1.75;
+}
+
+.info-box {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  border-radius: 22rpx;
+  background: #f8fbff;
+}
+
+.info-box.practice {
+  background: #fff7e6;
+}
+
+.info-title,
+.block-title {
+  font-size: 25rpx;
+  color: var(--text-primary);
+  font-weight: 900;
+}
+
+.info-text {
+  margin-top: 8rpx;
+  color: var(--text-secondary);
+  font-size: 24rpx;
+  line-height: 1.65;
+}
+
+.block {
+  margin-top: 22rpx;
+}
+
+.bullet-row {
+  padding: 10rpx 0;
+  color: var(--text-secondary);
+  font-size: 25rpx;
+  line-height: 1.6;
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  margin-top: 14rpx;
+}
+
+.resource-row {
+  margin-top: 12rpx;
+  padding: 18rpx;
+  border-radius: 18rpx;
+  background: #f8fbff;
+}
+
+.resource-name {
+  color: #2764e8;
+  font-size: 26rpx;
+  font-weight: 800;
+}
+
+.resource-desc {
+  margin-top: 6rpx;
+  color: var(--text-secondary);
+  font-size: 23rpx;
+  line-height: 1.5;
+}
+
+.fallback-card {
+  text-align: center;
+  padding: 64rpx 28rpx;
+}
+
+.center {
+  margin: 0 auto 20rpx;
+}

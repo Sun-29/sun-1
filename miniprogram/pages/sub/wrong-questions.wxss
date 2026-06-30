@@ -1,0 +1,15 @@
+.sub-content {
+  margin-top: -28rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.wrong-card {
+  padding: 28rpx;
+}
+
+.wrong-actions {
+  display: flex;
+  gap: 14rpx;
+  margin-top: 22rpx;
+}
