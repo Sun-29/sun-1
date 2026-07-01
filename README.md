@@ -1,3 +1,4 @@
+<img width="1206" height="2622" alt="5a01dbc59f109994afe001f4363c9ee9" src="https://github.com/user-attachments/assets/b73db45c-93b2-46b8-84c5-bc0a02705874" />
 # AI面试模拟系统 (AI Interview Simulator)
 
 基于大语言模型（LLM）的智能面试模拟与能力评估系统，帮助大学生和求职者进行面试训练、简历优化、技术能力评估和学习路线规划。
@@ -153,3 +154,14 @@ users, admins, positions, question_categories, questions, interviews, interview_
 - 更丰富的题库
 - 移动端适配PWA
 <img width="1206" height="2622" alt="bd35988ffbae13c4e1a06510e820674a" src="https://github.com/user-attachments/assets/32428bdf-e826-4232-9caf-2606814a9d71" />
+<img width="1206" height="2622" alt="5a01dbc59f109994afe001f4363c9ee9" src="https://github.com/user-attachments/assets/fd33f494-868b-4b48-86a9-71aa79805795" />
+<img width="1206" height="2622" alt="34dce5368e4de5e2069c7a75b03e09f3" src="https://github.com/user-attachments/assets/95825789-1924-4586-b8b4-a45cb61332bd" />
+<img width="1206" height="2622" alt="34dce5368e4de5e2069c7a75b03e09f3" src="https://github.com/user-attachments/assets/f4096f14-fcf1-4529-a1ee-d88b93ad8b88" />
+<img width="1206" height="2622" alt="1210a25f3a47e6575d01a58b87d3dd9e" src="https://github.com/user-attachments/assets/6637f898-0225-4785-916b-5692a0455292" />
+<img width="1206" height="2622" alt="048b3ac9867f58d9f2bc2d7b02a798bb" src="https://github.com/user-attachments/assets/6046a2cc-a891-40eb-85e5-346a6e3a5c88" />
+<img width="1206" height="2622" alt="fed10d023a95781d70e321d91751f6e4" src="https://github.com/user-attachments/assets/ab44de4c-ce45-4c02-a956-cc645dc26880" />
+<img width="1206" height="2622" alt="4e8501501ef9be7ce13edac6d68278d3" src="https://github.com/user-attachments/assets/b4716c70-d9cf-4b28-9f8d-6915130a9948" />
+
+
+
+
