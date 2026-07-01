@@ -152,3 +152,4 @@ users, admins, positions, question_categories, questions, interviews, interview_
 - 企业招聘对接
 - 更丰富的题库
 - 移动端适配PWA
+<img width="1206" height="2622" alt="bd35988ffbae13c4e1a06510e820674a" src="https://github.com/user-attachments/assets/32428bdf-e826-4232-9caf-2606814a9d71" />
