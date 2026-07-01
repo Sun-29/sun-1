@@ -1,4 +1,4 @@
-<img width="1206" height="2622" alt="5a01dbc59f109994afe001f4363c9ee9" src="https://github.com/user-attachments/assets/b73db45c-93b2-46b8-84c5-bc0a02705874" />
+
 # AI面试模拟系统 (AI Interview Simulator)
 
 基于大语言模型（LLM）的智能面试模拟与能力评估系统，帮助大学生和求职者进行面试训练、简历优化、技术能力评估和学习路线规划。
